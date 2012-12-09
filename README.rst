@@ -4,6 +4,9 @@ Kitabyte Typeface
 Kitabyte is a font family inspired by video game bitmap fonts. The font
 files are generated from text files.
 
+Project webpage: https://launchpad.net/kitabyte
+
+
 Building
 ========
 
