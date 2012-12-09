@@ -1,0 +1,6 @@
+*~
+*.bak
+.project
+.pydevproject
+.settings
+build/
