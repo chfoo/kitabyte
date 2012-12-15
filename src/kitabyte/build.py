@@ -20,7 +20,8 @@ def make_glyph(font, glyph_def):
     row_len = len(glyph_def.bitmap)
 
     for row in xrange(row_len):
-        row_flip = row_len - row
+#        row_flip = row_len - row
+        row_flip = 16 - row
 
         for col in xrange(len(glyph_def.bitmap[row])):
             if glyph_def.bitmap[row][col] != u'x':
