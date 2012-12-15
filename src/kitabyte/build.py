@@ -3,6 +3,8 @@
 # This file is part of Kitabyte.
 # Copyright © 2012 Christopher Foo <chris.foo@gmail.com>.
 # Licensed under SIL OFL 1.1. See COPYING.txt for details.
+from kitabyte.font import Glyph
+from kitabyte.reader import Reader
 import argparse
 import fontforge
 import kitabyte.reader
@@ -21,12 +23,18 @@ def make_glyph(font, glyph_def):
         row_flip = row_len - row
 
         for col in xrange(len(glyph_def.bitmap[row])):
-            if not glyph_def.bitmap[row][col]:
+            if glyph_def.bitmap[row][col] != u'x':
                 continue
+
+            if u'combining' in glyph_def.args:
+                col -= 8
 
             draw_square(pen, row_flip, col, square_size, descent_offset)
 
-    glyph.width = 16
+    if u'combining' in glyph_def.args:
+        glyph.width = 0
+    else:
+        glyph.width = 16
 
 
 def draw_square(pen, row, col, square_size, descent_offset):
@@ -54,10 +62,11 @@ def build_font(dir_name, familyname, fontname, fullname):
     font.familyname = familyname
     font.fullname = fullname
 
-    for filename in kitabyte.reader.get_font_def_filenames(dir_name):
-        with open(filename, 'r') as f:
-            for glyph_def in kitabyte.reader.read_font_def(f):
-                make_glyph(font, glyph_def)
+    reader = Reader(*kitabyte.reader.get_font_def_filenames(dir_name))
+
+    for glyph_def in kitabyte.reader.read_font_def(reader):
+        if isinstance(glyph_def, Glyph):
+            make_glyph(font, glyph_def)
 
     font.selection.all()
     font.removeOverlap()
@@ -75,7 +84,8 @@ copyright_str = (u'Copyright © 2012 by Christopher Foo <chris.foo@gmail.com>. '
 
 def build_all(dest_dir_name, file_extensions=(u'sfd',)):
     names = [
-        (u'regular', u'Kitabyte', u'Kitabyte-Regular', u'Kitabyte', u'0.1'),
+        (u'regular', u'Kitabyte', u'Kitabyte-Regular', u'Kitabyte',
+            kitabyte.__version__),
     ]
 
     for dir_name, familyname, fontname, fullname, version in names:
