@@ -37,9 +37,9 @@ diacritic:u+XX
 Anchor characters
 +++++++++++++++++
 
+====== ======= ==== ==========
 Symbol Visible Type Class Name
 ====== ======= ==== ==========
-
 t      true    base Top
 T              base Top
 p      true    mark Top
@@ -48,4 +48,4 @@ b      true    base Bottom
 B              base Bottom
 m      true    mark Bottom
 M              mark Bottom
-
+====== ======= ==== ==========
