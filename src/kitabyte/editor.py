@@ -101,7 +101,7 @@ class Editor(object):
         y, x = self._stdscr.getmaxyx()
 
         for col in xrange(1, x // 2 - 1):
-            self._stdscr.addstr(1, 2 + col * 2, u'%2d' % col,
+            self._stdscr.addstr(1, col * 2, u'%2d' % col,
                 curses.A_BOLD if col % 4 == 0 else 0)
 
         for row in xrange(1, y - 2):

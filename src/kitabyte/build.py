@@ -8,11 +8,34 @@ from kitabyte.reader import Reader
 import argparse
 import fontforge
 import kitabyte.reader
+import logging
 import os.path
+
+
+_logger = logging.getLogger(__name__)
 
 
 def make_glyph(font, glyph_def):
     glyph = font.createChar(glyph_def.char_code)
+
+    for arg in glyph_def.args:
+        if arg.startswith(u'reference:'):
+            code = int(arg.split(u':', 1)[1].lstrip('uU+'), 16)
+            glyph.addReference(fontforge.nameFromUnicode(code))
+        elif arg.startswith(u'diacritic:'):
+            code = int(arg.split(u':', 1)[1].lstrip('uU+'), 16)
+            glyph.appendAccent(fontforge.nameFromUnicode(code))
+
+    draw_glyph_rows(font, glyph, glyph_def)
+    add_anchors(font, glyph, glyph_def)
+
+    if u'combining' in glyph_def.args:
+        glyph.width = 0
+    else:
+        glyph.width = 16
+
+
+def draw_glyph_rows(font, glyph, glyph_def):
     square_size = 2
     descent_offset = font.descent + square_size
 
@@ -24,7 +47,7 @@ def make_glyph(font, glyph_def):
         row_flip = 16 - row
 
         for col in xrange(len(glyph_def.bitmap[row])):
-            if glyph_def.bitmap[row][col] != u'x':
+            if glyph_def.bitmap[row][col] not in (u'x', u't', u'p'):
                 continue
 
             if u'combining' in glyph_def.args:
@@ -32,10 +55,21 @@ def make_glyph(font, glyph_def):
 
             draw_square(pen, row_flip, col, square_size, descent_offset)
 
-    if u'combining' in glyph_def.args:
-        glyph.width = 0
-    else:
-        glyph.width = 16
+
+def add_anchors(font, glyph, glyph_def):
+    row_len = len(glyph_def.bitmap)
+
+    for row in xrange(row_len):
+#        row_flip = row_len - row
+        row_flip = 16 - row
+
+        for col in xrange(len(glyph_def.bitmap[row])):
+            s = glyph_def.bitmap[row][col]
+
+            if s.lower() == u't':
+                glyph.addAnchorPoint('Top', 'base', col, row_flip)
+            elif s.lower() == u'p':
+                glyph.addAnchorPoint('Top', 'mark', col, row_flip)
 
 
 def draw_square(pen, row, col, square_size, descent_offset):
@@ -62,12 +96,36 @@ def build_font(dir_name, familyname, fontname, fullname):
     font.fontname = fontname
     font.familyname = familyname
     font.fullname = fullname
+    font.encoding = 'unicode'
 
-    reader = Reader(*kitabyte.reader.get_font_def_filenames(dir_name))
+    font.addLookup('Anchors', 'gpos_mark2base', (), (
+        ("mark", (("DFLT", ("dflt")),)),
+    ))
+    font.addLookupSubtable('Anchors', 'DiacriticTop')
+    font.addAnchorClass('DiacriticTop', 'Top')
+#    font.addLookupSubtable('Anchors', 'DiacriticBottom')
+#    font.addAnchorClass('DiacriticBottom', 'Bottom')
+
+    reader = Reader(*sorted(kitabyte.reader.get_font_def_filenames(dir_name)))
+
+    deferred_glyph_defs = []
 
     for glyph_def in kitabyte.reader.read_font_def(reader):
         if isinstance(glyph_def, Glyph):
-            make_glyph(font, glyph_def)
+            try:
+                _logger.debug('Processing u+%x %s', glyph_def.char_code,
+                    fontforge.nameFromUnicode(glyph_def.char_code))
+                make_glyph(font, glyph_def)
+            except:
+                _logger.exception('Deferring glyph u+%x %s',
+                    glyph_def.char_code,
+                    fontforge.nameFromUnicode(glyph_def.char_code))
+                deferred_glyph_defs.append(glyph_def)
+
+    for glyph_def in deferred_glyph_defs:
+        _logger.debug('Processing u+%x %s', glyph_def.char_code,
+                fontforge.nameFromUnicode(glyph_def.char_code))
+        make_glyph(font, glyph_def)
 
     font.selection.all()
     font.removeOverlap()
@@ -105,5 +163,7 @@ if __name__ == '__main__':
     arg_parser.add_argument(u'--format', default=[u'sfd'], nargs='*')
 
     args = arg_parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG)
 
     build_all(args.dest_dir, args.format)
