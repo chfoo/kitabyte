@@ -1,6 +1,9 @@
 Kitabyte Typeface
 =================
 
+.. image:: https://raw.github.com/chfoo/kitabyte/master/KitabyteRegularSpecimen.png
+    :alt: Font specimen.
+
 Kitabyte is a font family inspired by video game bitmap fonts. The font
 files are generated from text files.
 
