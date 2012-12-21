@@ -17,6 +17,7 @@ _logger = logging.getLogger(__name__)
 
 def make_glyph(font, glyph_def):
     glyph = font.createChar(glyph_def.char_code)
+    glyph.manualHints = True
 
     for arg in glyph_def.args:
         if arg.startswith(u'reference:'):
