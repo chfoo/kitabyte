@@ -137,7 +137,8 @@ def build_font(dir_name, familyname, fontname, fullname):
     return font
 
 
-copyright_str = (u'Copyright © 2012 by Christopher Foo <chris.foo@gmail.com>. '
+copyright_str = (u'Copyright © 2012-2013 by Christopher Foo '
+    '<chris.foo@gmail.com>. '
     u'Licensed under the SIL Open Font License version 1.1.'
 )
 
