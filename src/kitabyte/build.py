@@ -13,6 +13,7 @@ import os.path
 
 
 _logger = logging.getLogger(__name__)
+VISIBLE_CHARS = (u'x', u't', u'p')
 
 
 def make_glyph(font, glyph_def):
@@ -29,6 +30,8 @@ def make_glyph(font, glyph_def):
 
     draw_glyph_rows(font, glyph, glyph_def)
     add_anchors(font, glyph, glyph_def)
+    add_row_hints(font, glyph, glyph_def)
+    add_col_hints(font, glyph, glyph_def)
 
     if u'combining' in glyph_def.args:
         glyph.width = 0
@@ -48,7 +51,7 @@ def draw_glyph_rows(font, glyph, glyph_def):
         row_flip = 16 - row
 
         for col in xrange(len(glyph_def.bitmap[row])):
-            if glyph_def.bitmap[row][col] not in (u'x', u't', u'p'):
+            if glyph_def.bitmap[row][col] not in VISIBLE_CHARS:
                 continue
 
             if u'combining' in glyph_def.args:
@@ -71,6 +74,61 @@ def add_anchors(font, glyph, glyph_def):
                 glyph.addAnchorPoint('Top', 'base', col, row_flip)
             elif s.lower() == u'p':
                 glyph.addAnchorPoint('Top', 'mark', col, row_flip)
+
+
+def add_row_hints(font, glyph, glyph_def):
+    square_size = 2
+    descent_offset = font.descent + square_size
+    row_len = len(glyph_def.bitmap)
+    l = []
+
+    for row in xrange(row_len):
+#        row_flip = row_len - row
+        row_flip = 16 - row
+
+        row_count = 0
+
+        for col in xrange(len(glyph_def.bitmap[row])):
+            if glyph_def.bitmap[row][col] not in VISIBLE_CHARS:
+                row_count = 0
+                continue
+
+            row_count += 1
+
+            if row_count == 3:
+                y = row_flip * square_size - descent_offset
+                l.append((y, square_size))
+
+    glyph.hhints = l
+
+
+def add_col_hints(font, glyph, glyph_def):
+    square_size = 2
+    row_len = len(glyph_def.bitmap)
+    l = []
+
+    if not glyph_def.bitmap:
+        return
+
+    for col in xrange(max(len(row) for row in glyph_def.bitmap)):
+        col_count = 0
+
+        for row in xrange(row_len):
+            try:
+                if glyph_def.bitmap[row][col] not in VISIBLE_CHARS:
+                    col_count = 0
+                    continue
+            except IndexError:
+                col_count = 0
+                continue
+
+            col_count += 1
+
+            if col_count == 3:
+                x = col * square_size
+                l.append((x, square_size))
+
+    glyph.vhints = l
 
 
 def draw_square(pen, row, col, square_size, descent_offset):
@@ -132,7 +190,6 @@ def build_font(dir_name, familyname, fontname, fullname):
     font.removeOverlap()
     font.simplify()
     font.correctDirection()
-#    font.autoHint()
 
     return font
 
