@@ -99,7 +99,7 @@ def add_row_hints(font, glyph, glyph_def):
                 y = row_flip * square_size - descent_offset
                 l.append((y, square_size))
 
-    glyph.hhints = l
+    glyph.hhints = tuple(reversed(l))
 
 
 def add_col_hints(font, glyph, glyph_def):
