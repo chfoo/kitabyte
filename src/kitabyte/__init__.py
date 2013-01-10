@@ -5,5 +5,5 @@
 # Licensed under SIL OFL 1.1. See COPYING.txt for details.
 import distutils.version
 
-short_version = u'1.4'  # N.N
+short_version = u'1.5'  # N.N
 __version__ = short_version + u''  # N.N[.N]+[{a|b|c|rc}N[.N]+][.postN][.devN]

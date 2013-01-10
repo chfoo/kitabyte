@@ -17,6 +17,7 @@ import psMat
 
 _logger = logging.getLogger(__name__)
 VISIBLE_CHARS = (u'x', u't', u'p')
+SQUARE_SIZE = 10
 
 
 class Builder(object):
@@ -44,18 +45,22 @@ class Builder(object):
         self.add_row_hints(glyph, glyph_def, glyph_sizes)
         self.add_col_hints(glyph, glyph_def, glyph_sizes)
 
+        if 'oblique' in font.fontname.lower():
+            glyph.transform(psMat.skew(math.pi / 180 * 10), ('partialRefs',))
+
         if u'combining' in glyph_def.args:
             glyph.width = 0
         else:
-            glyph.width = 16
+            glyph.width = glyph_sizes.square_size * 8
 
     def calc_glyph_sizes(self, glyph_def):
-        square_size = 2
+        square_size = SQUARE_SIZE
         descent_offset = self.font.descent + square_size
         row_len = len(glyph_def.bitmap)
         row_count_flip = 16
 
-        return self.GlyphSizes(square_size, descent_offset, row_len, row_count_flip)
+        return self.GlyphSizes(square_size, descent_offset, row_len,
+            row_count_flip)
 
     def draw_glyph_rows(self, glyph, glyph_def, glyph_sizes):
         pen = glyph.glyphPen()
@@ -152,12 +157,12 @@ class Builder(object):
     def build_font(self, dir_name, familyname, fontname, fullname):
         self.font = font = fontforge.font()
     #    height = 32
-        font.descent = 8
-        font.ascent = 16
+        font.descent = 4 * SQUARE_SIZE
+        font.ascent = 8 * SQUARE_SIZE
     #    font.em = 28
     #    font.design_size = 12
-        font.upos = -4
-        font.uwidth = 2
+        font.upos = -2 * SQUARE_SIZE
+        font.uwidth = SQUARE_SIZE
         font.fontname = fontname
         font.familyname = familyname
         font.fullname = fullname
@@ -197,9 +202,6 @@ class Builder(object):
         font.removeOverlap()
         font.simplify()
         font.correctDirection()
-
-        if 'oblique' in font.fontname.lower():
-            font.transform(psMat.skew(math.pi / 180 * 10))
 
         return font
 
