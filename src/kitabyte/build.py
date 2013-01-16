@@ -81,14 +81,16 @@ class Builder(object):
 
         for row in xrange(glyph_sizes.row_len):
             row_flip = glyph_sizes.row_count_flip - row
+            y = row_flip * glyph_sizes.square_size - glyph_sizes.descent_offset
 
             for col in xrange(len(glyph_def.bitmap[row])):
                 s = glyph_def.bitmap[row][col]
+                x = col * glyph_sizes.square_size
 
                 if s.lower() == u't':
-                    glyph.addAnchorPoint('Top', 'base', col, row_flip)
+                    glyph.addAnchorPoint('Top', 'base', x, y)
                 elif s.lower() == u'p':
-                    glyph.addAnchorPoint('Top', 'mark', col, row_flip)
+                    glyph.addAnchorPoint('Top', 'mark', x, y)
 
     def add_row_hints(self, glyph, glyph_def, glyph_sizes):
         l = []
