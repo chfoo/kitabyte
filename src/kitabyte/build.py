@@ -173,6 +173,15 @@ class Builder(object):
         font.fullname = fullname
         font.encoding = 'unicode'
 
+        if 'bold' in fontname.lower():
+            font.weight = 'Bold'
+
+        if 'oblique' in fontname.lower():
+            font.italicangle = -10.0
+
+        if 'boldoblique' in fontname.lower():
+            font.appendSFNTName(0x0409, 'SubFamily', 'Bold Oblique')
+
         font.addLookup('Anchors', 'gpos_mark2base', (), (
             ("mark", (("DFLT", ("dflt")),)),
         ))
