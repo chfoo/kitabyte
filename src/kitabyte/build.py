@@ -17,7 +17,7 @@ import psMat
 
 _logger = logging.getLogger(__name__)
 VISIBLE_CHARS = (u'x', u't', u'p')
-SQUARE_SIZE = 10
+SQUARE_SIZE = 25
 
 
 class Builder(object):
@@ -42,8 +42,11 @@ class Builder(object):
 
         self.draw_glyph_rows(glyph, glyph_def, glyph_sizes)
         self.add_anchors(glyph, glyph_def, glyph_sizes)
-        self.add_row_hints(glyph, glyph_def, glyph_sizes)
-        self.add_col_hints(glyph, glyph_def, glyph_sizes)
+
+#        if not ('oblique' in font.fontname.lower() or \
+#        'bold' in font.fontname.lower()):
+#            self.add_row_hints(glyph, glyph_def, glyph_sizes)
+#            self.add_col_hints(glyph, glyph_def, glyph_sizes)
 
         if 'oblique' in font.fontname.lower():
             glyph.transform(psMat.skew(math.pi / 180 * 10), ('partialRefs',))
