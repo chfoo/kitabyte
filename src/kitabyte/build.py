@@ -27,7 +27,12 @@ class Builder(object):
 
     def make_glyph(self, glyph_def):
         font = self.font
-        glyph = font.createChar(glyph_def.char_code)
+
+        if glyph_def.char_code == -1:
+            glyph = font.createChar(-1, '.notdef')
+        else:
+            glyph = font.createChar(glyph_def.char_code)
+
         glyph.manualHints = True
 
         for arg in glyph_def.args:

@@ -107,7 +107,11 @@ def read_font_def(reader):
 
         if line.startswith(u'['):
             args = line[1:].split()
-            char_code = int(args.pop(0).lstrip('Uu+'), 16)
+
+            if args[0] == '.notdef':
+                char_code = -1
+            else:
+                char_code = int(args.pop(0).lstrip('Uu+'), 16)
 
             yield read_glyph(reader, char_code, args)
 
