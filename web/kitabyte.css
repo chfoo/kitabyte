@@ -1,0 +1,20 @@
+@font-face {
+	font-family: Kitabyte;
+	src: url('Kitabyte-Regular.woff');
+}
+@font-face {
+	font-family: Kitabyte;
+	src: url('Kitabyte-Bold.woff');
+	font-weight: bold;
+}
+@font-face {
+	font-family: Kitabyte;
+	src: url('Kitabyte-Oblique.woff');
+	font-style: oblique;
+}
+@font-face {
+	font-family: Kitabyte;
+	src: url('Kitabyte-BoldOblique.woff');
+	font-weight: bold;
+	font-style: oblique;
+}

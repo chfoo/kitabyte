@@ -9,6 +9,8 @@ files are generated from text files.
 
 Project webpage: https://launchpad.net/kitabyte
 
+Downloads: https://launchpad.net/kitabyte/+download
+
 
 Building
 ========
