@@ -7,9 +7,14 @@ Kitabyte Typeface
 Kitabyte is a font family inspired by video game bitmap fonts. The font
 files are generated from text files.
 
-Project webpage: https://launchpad.net/kitabyte
+* Launchpad Project Webpage: https://launchpad.net/kitabyte
+* GitHub Repo Webpage: https://github.com/chfoo/kitabyte/
+* Downloads: https://launchpad.net/kitabyte/+download
 
-Downloads: https://launchpad.net/kitabyte/+download
+Bug reports and questions should go on the Launchpad project. Currently,
+there is no preference on Branch Imports versus Pull Requests.
+The GitHub repo is a manually updated mirror although this may change
+on the first contribution ``:)``.
 
 
 Building
@@ -38,6 +43,10 @@ reference:u+XX
 
 diacritic:u+XX
     Adds a diacritic to the glyph.
+
+combining
+    Gives the glyph zero width.
+
 
 Anchor characters
 +++++++++++++++++

@@ -470,16 +470,16 @@
 [ u+41
 
 
-    T
 
-   xx
+
+   xt
   x  x
   x  x
  x    x
  x    x
  xxxxxx
  x    x
- x    x
+ x    b
 ]
 
 [ u+42
@@ -487,7 +487,7 @@
 
 
 
- xxxx
+ xxtx
  x   x
  x   x
  xxxx
@@ -502,14 +502,14 @@
 
 
 
-   xxx
+   xtx
   x   x
  x
  x
  x
  x
   x   x
-   xxx
+   xbx
 ]
 
 [ u+44
@@ -517,29 +517,29 @@
 
 
 
- xxxx
+ xxtx
  x   x
  x    x
  x    x
  x    x
  x    x
  x   x
- xxxx
+ xxbx
 ]
 
 [ u+45
 
 
-    T
 
- xxxxxx
+
+ xxxtxx
  x
  x
  xxxxx
  x
  x
  x
- xxxxxx
+ xxxbxx
 ]
 
 [ u+46
@@ -547,14 +547,14 @@
 
 
 
- xxxxxx
+ xxxtxx
  x
  x
  xxxxx
  x
  x
  x
- x
+ b
 ]
 
 [ u+47
@@ -562,14 +562,14 @@
 
 
 
-  xxxx
+  xxtx
  x    x
  x
  x
  x  xxx
  x    x
  x    x
-  xxxx
+  xxbx
 ]
 
 [ u+48
@@ -577,7 +577,7 @@
 
 
 
- x    x
+ x  T x
  x    x
  x    x
  xxxxxx
@@ -590,16 +590,16 @@
 [ u+49
 
 
-    T
 
-  xxxxx
+
+  xxtxx
     x
     x
     x
     x
     x
     x
-  xxxxx
+  xxbxx
 ]
 
 [ u+4a
@@ -665,9 +665,9 @@
 [ u+4e
 
 
-    T
 
- x    x
+
+ x  T x
  x    x
  xx   x
  x x  x
@@ -680,9 +680,9 @@
 [ u+4f
 
 
-    T
 
-  xxxx
+
+  xxtx
  x    x
  x    x
  x    x
@@ -910,7 +910,9 @@
 
     x
    x x
-  x P x
+  x   x
+
+    P
 ]
 
 [ u+5f
@@ -935,22 +937,24 @@
 
 
   xx
-    px
+    xx
+
+    P
 ]
 
 [ u+61
 
 
 
+
+
     T
-
-
    xxx
       x
   xxxxx
  x    x
  x    x
-  xxxxx
+  xxxxb
 ]
 
 [ u+62
@@ -974,20 +978,20 @@
 
 
 
-
+    T
   xxxx
  x
  x
  x
  x
-  xxxx
+  xxbx
 ]
 
 [ u+64
 
 
 
-
+      T
       x
       x
   xxx x
@@ -1002,15 +1006,15 @@
 
 
 
+
+
     T
-
-
   xxxx
  x    x
  xxxxxx
  x
  x
-  xxxx
+  xxbx
 ]
 
 [ u+66
@@ -1034,21 +1038,21 @@
 
 
 
-
+    T
   xxx x
  x   xx
  x    x
  x   xx
   xxx x
       x
-   xxx
+   xbx
 ]
 
 [ u+68
 
 
 
-
+ T
  x
  x
  x xxx
@@ -1139,9 +1143,9 @@
 
 
 
+
+
     T
-
-
  x xxx
  xx   x
  x    x
@@ -1155,8 +1159,8 @@
 
 
 
-    T
 
+    T
   xxxx
  x    x
  x    x
@@ -1248,9 +1252,9 @@
 
 
 
+
+
     T
-
-
  x    x
  x    x
  x    x
@@ -1308,9 +1312,9 @@
 
 
 
+
+
     T
-
-
  x    x
  x    x
  x    x
@@ -1387,6 +1391,8 @@
 
 
   xx  x
- x  px
+ x  xx
+
+    P
 ]
 

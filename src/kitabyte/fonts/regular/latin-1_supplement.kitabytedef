@@ -111,7 +111,9 @@
 
 
 
-  x Px
+  x  x
+
+    P
 ]
 
 [ u+a9
@@ -186,6 +188,8 @@
 
 
   xxxx
+
+    P
 ]
 
 [ u+b0
@@ -243,7 +247,9 @@
 
 
     xx
-  xxP
+  xx
+
+    P
 ]
 
 [ u+b5
@@ -302,7 +308,7 @@
 
 
 
-
+   m
     x
   xx
 ]
@@ -469,19 +475,15 @@
 [ u+cf reference:u+49 diacritic:u+a8
 ]
 
-[ u+d0
+[ u+d0 reference:u+44
 
 
 
 
-  xxx
-  x  x
-  x   x
- xxx  x
-  x   x
-  x   x
-  x  x
-  xxx
+
+
+
+xxx
 ]
 
 [ u+d1 reference:u+4e diacritic:u+7e

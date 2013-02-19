@@ -16,7 +16,7 @@ import psMat
 
 
 _logger = logging.getLogger(__name__)
-VISIBLE_CHARS = (u'x', u't', u'p')
+VISIBLE_CHARS = (u'x', u't', u'p', u'b', u'm')
 SQUARE_SIZE = 25
 
 
@@ -35,6 +35,11 @@ class Builder(object):
 
         glyph.manualHints = True
 
+        glyph_sizes = self.calc_glyph_sizes(glyph_def)
+
+        self.draw_glyph_rows(glyph, glyph_def, glyph_sizes)
+        self.add_anchors(glyph, glyph_def, glyph_sizes)
+
         for arg in glyph_def.args:
             if arg.startswith(u'reference:'):
                 code = int(arg.split(u':', 1)[1].lstrip('uU+'), 16)
@@ -42,11 +47,6 @@ class Builder(object):
             elif arg.startswith(u'diacritic:'):
                 code = int(arg.split(u':', 1)[1].lstrip('uU+'), 16)
                 glyph.appendAccent(fontforge.nameFromUnicode(code))
-
-        glyph_sizes = self.calc_glyph_sizes(glyph_def)
-
-        self.draw_glyph_rows(glyph, glyph_def, glyph_sizes)
-        self.add_anchors(glyph, glyph_def, glyph_sizes)
 
 #        if not ('oblique' in font.fontname.lower() or \
 #        'bold' in font.fontname.lower()):
@@ -99,6 +99,10 @@ class Builder(object):
                     glyph.addAnchorPoint('Top', 'base', x, y)
                 elif s.lower() == u'p':
                     glyph.addAnchorPoint('Top', 'mark', x, y)
+                elif s.lower() == u'b':
+                    glyph.addAnchorPoint('Bottom', 'base', x, y)
+                elif s.lower() == u'm':
+                    glyph.addAnchorPoint('Bottom', 'mark', x, y)
 
     def add_row_hints(self, glyph, glyph_def, glyph_sizes):
         l = []
@@ -192,8 +196,8 @@ class Builder(object):
         ))
         font.addLookupSubtable('Anchors', 'DiacriticTop')
         font.addAnchorClass('DiacriticTop', 'Top')
-    #    font.addLookupSubtable('Anchors', 'DiacriticBottom')
-    #    font.addAnchorClass('DiacriticBottom', 'Bottom')
+        font.addLookupSubtable('Anchors', 'DiacriticBottom')
+        font.addAnchorClass('DiacriticBottom', 'Bottom')
 
         reader = Reader(
             *sorted(kitabyte.reader.get_font_def_filenames(dir_name)))
