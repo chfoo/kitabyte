@@ -212,7 +212,7 @@ class Builder(object):
                         fontforge.nameFromUnicode(glyph_def.char_code))
                     self.make_glyph(glyph_def)
                 except:
-                    _logger.exception('Deferring glyph u+%x %s',
+                    _logger.debug('Deferring glyph u+%x %s',
                         glyph_def.char_code,
                         fontforge.nameFromUnicode(glyph_def.char_code))
                     deferred_glyph_defs.append(glyph_def)
@@ -256,6 +256,7 @@ def build_all(dest_dir_name, file_extensions=(u'sfd',)):
         font.copyright = copyright_str
 
         for file_extension in file_extensions:
+            _logger.info('Building %s.%s', fontname, file_extension)
             font.generate(os.path.join(dest_dir_name,
                 '%s.%s' % (fontname, file_extension)))
 
@@ -267,6 +268,6 @@ if __name__ == '__main__':
 
     args = arg_parser.parse_args()
 
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
     build_all(args.dest_dir, args.format)
