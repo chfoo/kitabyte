@@ -32,7 +32,8 @@ class Builder(object):
             glyph = font.createChar(-1, '.notdef')
         else:
             glyph = font.createChar(glyph_def.char_code)
-
+        
+        glyph.clear()
         glyph.manualHints = True
 
         glyph_sizes = self.calc_glyph_sizes(glyph_def)
