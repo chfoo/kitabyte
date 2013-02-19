@@ -163,7 +163,7 @@
 
 
 
-
+    M
 
     x
     x
@@ -479,7 +479,7 @@
  x    x
  xxxxxx
  x    x
- x    b
+ x  B x
 ]
 
 [ u+42
@@ -494,7 +494,7 @@
  x   x
  x    x
  x    x
- xxxxx
+ xxbxx
 ]
 
 [ u+43
@@ -584,7 +584,7 @@
  x    x
  x    x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+49
@@ -607,14 +607,14 @@
 
 
 
-  xxxxx
+  xtxxx
     x
     x
     x
     x
     x
  x  x
-  xx
+  xb
 ]
 
 [ u+4b
@@ -622,14 +622,14 @@
 
 
 
- x   xx
+ x T xx
  x  x
  x x
  xx
  xx
  x x
  x  x
- x   xx
+ x B xx
 ]
 
 [ u+4c
@@ -637,14 +637,14 @@
 
 
 
+ xT
  x
  x
  x
  x
  x
  x
- x
- xxxxxx
+ xxxbxx
 ]
 
 [ u+4d
@@ -652,14 +652,14 @@
 
 
 
- x    x
+ x  T x
  xx  xx
  x xx x
  x xx x
  x    x
  x    x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+4e
@@ -674,7 +674,7 @@
  x  x x
  x   xx
  x    x
- x    x
+ x B  x
 ]
 
 [ u+4f
@@ -689,7 +689,7 @@
  x    x
  x    x
  x    x
-  xxxx
+  xxbx
 ]
 
 [ u+50
@@ -697,14 +697,14 @@
 
 
 
- xxxx
+ xxtx
  x   x
  x    x
  x    x
  xxxxx
  x
  x
- x
+ b
 ]
 
 [ u+51
@@ -712,14 +712,14 @@
 
 
 
-  xxxx
+  xxtx
  x    x
  x    x
  x    x
  x x  x
  x  x x
  x  x x
-  xxxx
+  xbxx
       x
 ]
 
@@ -728,14 +728,14 @@
 
 
 
- xxxxx
+ xxtxx
  x    x
  x    x
  xxxxx
  x  x
  x   x
  x   x
- x    x
+ x B  x
 ]
 
 [ u+53
@@ -743,14 +743,14 @@
 
 
 
-  xxxx
+  xxtx
  x    x
  x
   xx
     xx
       x
  x    x
-  xxxx
+  xxbx
 ]
 
 [ u+54
@@ -758,29 +758,29 @@
 
 
 
-  xxxxx
+  xxtxx
     x
     x
     x
     x
     x
     x
-    x
+    b
 ]
 
 [ u+55
 
 
-    T
 
+
+ x  T x
  x    x
  x    x
  x    x
  x    x
  x    x
  x    x
- x    x
-  xxxx
+  xxbx
 ]
 
 [ u+56
@@ -788,14 +788,14 @@
 
 
 
- x    x
+ x  T x
  x    x
  x    x
   x  x
   x  x
   x  x
    xx
-   xx
+   xb
 ]
 
 [ u+57
@@ -803,14 +803,14 @@
 
 
 
- x    x
+ x  T x
  x    x
  x    x
  x xx x
  x xx x
  xx  xx
   x  x
-  x  x
+  x Bx
 ]
 
 [ u+58
@@ -818,29 +818,29 @@
 
 
 
- x    x
+ x  T x
  x    x
   x  x
    xx
   x  x
  x    x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+59
 
 
-    T
 
-  x   x
+
+  x T x
   x   x
   x   x
    x x
     x
     x
     x
-    x
+    b
 ]
 
 [ u+5a
@@ -848,14 +848,14 @@
 
 
 
- xxxxxx
+ xxxtxx
       x
      x
     x
    x
   x
  x
- xxxxxx
+ xxxbxx
 ]
 
 [ u+5b
@@ -954,14 +954,14 @@
   xxxxx
  x    x
  x    x
-  xxxxb
+  xxbxx
 ]
 
 [ u+62
 
 
 
-
+ T
  x
  x
  x xxx
@@ -969,7 +969,7 @@
  x    x
  x    x
  xx   x
- x xxx
+ x xbx
 ]
 
 [ u+63
@@ -999,7 +999,7 @@
  x    x
  x    x
  x   xx
-  xxx x
+  xxb x
 ]
 
 [ u+65
@@ -1021,7 +1021,7 @@
 
 
 
-
+   T
     xxx
    x
  xxxxx
@@ -1029,7 +1029,7 @@
    x
    x
    x
-   x
+   b
 ]
 
 [ u+67
@@ -1060,7 +1060,7 @@
  x    x
  x    x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+69
@@ -1098,7 +1098,7 @@
 
 
 
-
+ T
  x
  x
  x   xx
@@ -1106,14 +1106,14 @@
  xxx
  x x
  x  x
- x   xx
+ x B xx
 ]
 
 [ u+6c
 
 
 
-
+   T
   xx
    x
    x
@@ -1121,7 +1121,7 @@
    x
    x
    x
-    xx
+    bx
 ]
 
 [ u+6d
@@ -1130,13 +1130,13 @@
 
 
 
-
+   T
  xx  x
  x xx x
  x xx x
  x    x
  x    x
- x    x
+ x B  x
 ]
 
 [ u+6e
@@ -1151,7 +1151,7 @@
  x    x
  x    x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+6f
@@ -1166,7 +1166,7 @@
  x    x
  x    x
  x    x
-  xxxx
+  xxbx
 ]
 
 [ u+70
@@ -1175,7 +1175,7 @@
 
 
 
-
+    T
  x xxx
  xx   x
  x    x
@@ -1183,7 +1183,7 @@
  xx   x
  x xxx
  x
- x
+ b
 ]
 
 [ u+71
@@ -1192,7 +1192,7 @@
 
 
 
-
+    T
   xxx x
  x   xx
  x    x
@@ -1200,7 +1200,7 @@
  x   xx
   xxx x
       x
-      xx
+      bx
 ]
 
 [ u+72
@@ -1209,13 +1209,13 @@
 
 
 
-
+    T
  x xxx
  xx   x
  x
  x
  x
- x
+ b
 ]
 
 [ u+73
@@ -1224,20 +1224,20 @@
 
 
 
-
+    T
   xxxx
  x
   xxxx
       x
       x
- xxxxx
+ xxxbx
 ]
 
 [ u+74
 
 
 
-
+   T
    x
    x
  xxxxx
@@ -1245,7 +1245,7 @@
    x
    x
    x
-    xx
+    bx
 ]
 
 [ u+75
@@ -1260,7 +1260,7 @@
  x    x
  x    x
  x   xx
-  xxx x
+  xxb x
 ]
 
 [ u+76
@@ -1269,13 +1269,13 @@
 
 
 
-
+    T
  x    x
  x    x
  x    x
   x  x
   x  x
-   xx
+   xb
 ]
 
 [ u+77
@@ -1284,13 +1284,13 @@
 
 
 
-
+    T
  x    x
  x    x
  x xx x
  x xx x
   x  x
-  x  x
+  x Bx
 ]
 
 [ u+78
@@ -1299,13 +1299,13 @@
 
 
 
-
+    T
  x    x
   x  x
    xx
   x  x
  x    x
- x    x
+ x  B x
 ]
 
 [ u+79
@@ -1321,7 +1321,7 @@
  x   xx
   xxx x
       x
-   xxx
+   xbx
 ]
 
 [ u+7a
@@ -1330,13 +1330,13 @@
 
 
 
-
+    T
  xxxxxx
      x
     x
    x
   x
- xxxxxx
+ xxxbxx
 ]
 
 [ u+7b

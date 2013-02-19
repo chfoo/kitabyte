@@ -177,3 +177,344 @@ xxxxxxxx
 [ u+135 reference:u+237 diacritic:u+5e
 ]
 
+[ u+136 reference:u+4b diacritic:u+b8
+]
+
+[ u+137 reference:u+6b diacritic:u+b8
+]
+
+[ u+138
+
+
+
+
+
+
+ x   xx
+ x  x
+ xxx
+ x x
+ x  x
+ x   xx
+]
+
+[ u+139 reference:u+4c diacritic:u+b4
+]
+
+[ u+13a reference:u+6c diacritic:u+b4
+]
+
+[ u+13b reference:u+4c diacritic:u+b8
+]
+
+[ u+13c reference:u+6c diacritic:u+b8
+]
+
+[ u+13d reference:u+4c diacritic:u+2019
+]
+
+[ u+13e reference:u+6c diacritic:u+2019
+]
+
+[ u+13f reference:u+4c reference:u+b7
+]
+
+[ u+140 reference:u+6c reference:u+b7
+]
+
+[ u+141 reference:u+4c
+
+
+
+
+
+   xx
+  x
+xx
+]
+
+[ u+142 reference:u+6c
+
+
+
+
+
+
+    xx
+   x
+ xx
+]
+
+[ u+143 reference:u+4e diacritic:u+b4
+]
+
+[ u+144 reference:u+6e diacritic:u+b4
+]
+
+[ u+145 reference:u+4e diacritic:u+b8
+]
+
+[ u+146 reference:u+6e diacritic:u+b8
+]
+
+[ u+147 reference:u+4e diacritic:u+2c7
+]
+
+[ u+148 reference:u+6e diacritic:u+2c7
+]
+
+[ u+149 reference:u+6e
+
+
+ x
+ x
+x
+]
+
+[ u+14a
+
+
+
+
+ x    x
+ x    x
+ xx   x
+ x x  x
+ x  x x
+ x   xx
+ x    x
+ x    x
+    xx
+]
+
+[ u+14b
+
+
+
+
+
+
+ x xxx
+ xx   x
+ x    x
+ x    x
+ x    x
+ x    x
+      x
+    xx
+]
+
+[ u+14c reference:u+4f diacritic:u+af
+]
+
+[ u+14d reference:u+6f diacritic:u+af
+]
+
+[ u+14e reference:u+4f diacritic:u+2d8
+]
+
+[ u+14f reference:u+6f diacritic:u+2d8
+]
+
+[ u+150 reference:u+4f diacritic:u+2ee
+]
+
+[ u+151 reference:u+6f diacritic:u+2ee
+]
+
+[ u+152
+
+
+
+
+  xxxxx
+ x  x
+ x  x
+ x  xxx
+ x  x
+ x  x
+ x  x
+  xxxxx
+]
+
+[ u+153
+
+
+
+
+
+
+  xx x
+ x  x x
+ x  xxx
+ x  x
+ x  x
+  xx xx
+]
+
+[ u+154 reference:u+52 diacritic:u+b4
+]
+
+[ u+155 reference:u+72 diacritic:u+b4
+]
+
+[ u+154 reference:u+52 diacritic:u+b4
+]
+
+[ u+155 reference:u+72 diacritic:u+b4
+]
+
+[ u+156 reference:u+52 diacritic:u+b8
+]
+
+[ u+157 reference:u+72 diacritic:u+b8
+]
+
+[ u+158 reference:u+52 diacritic:u+2c7
+]
+
+[ u+159 reference:u+72 diacritic:u+2c7
+]
+
+[ u+15a reference:u+53 diacritic:u+b4
+]
+
+[ u+15b reference:u+73 diacritic:u+b4
+]
+
+[ u+15c reference:u+53 diacritic:u+5e
+]
+
+[ u+15d reference:u+73 diacritic:u+5e
+]
+
+[ u+15e reference:u+53 diacritic:u+b8
+]
+
+[ u+15f reference:u+73 diacritic:u+b8
+]
+
+[ u+160 reference:u+53 diacritic:u+2c7
+]
+
+[ u+161 reference:u+73 diacritic:u+2c7
+]
+
+[ u+162 reference:u+54 diacritic:u+b8
+]
+
+[ u+163 reference:u+74 diacritic:u+b8
+]
+
+[ u+164 reference:u+54 diacritic:u+2c7
+]
+
+[ u+165 reference:u+74 diacritic:u+2019
+]
+
+[ u+166 reference:u+54
+
+
+
+
+
+
+
+   xxx
+]
+
+[ u+167 reference:u+74
+
+
+
+
+
+
+
+
+  xxx
+]
+
+[ u+168 reference:u+55 diacritic:u+7e
+]
+
+[ u+169 reference:u+75 diacritic:u+7e
+]
+
+[ u+16a reference:u+55 diacritic:u+af
+]
+
+[ u+16b reference:u+75 diacritic:u+af
+]
+
+[ u+16c reference:u+55 diacritic:u+2d8
+]
+
+[ u+16d reference:u+75 diacritic:u+2d8
+]
+
+[ u+16e reference:u+55 diacritic:u+2da
+]
+
+[ u+16f reference:u+75 diacritic:u+2da
+]
+
+[ u+170 reference:u+55 diacritic:u+2ee
+]
+
+[ u+171 reference:u+75 diacritic:u+2ee
+]
+
+[ u+172 reference:u+55 diacritic:u+2db
+]
+
+[ u+173 reference:u+75 diacritic:u+2db
+]
+
+[ u+174 reference:u+57 diacritic:u+5e
+]
+
+[ u+175 reference:u+77 diacritic:u+5e
+]
+
+[ u+176 reference:u+59 diacritic:u+5e
+]
+
+[ u+177 reference:u+79 diacritic:u+5e
+]
+
+[ u+178 reference:u+59 diacritic:u+a8
+]
+
+[ u+179 reference:u+5a diacritic:u+b4
+]
+
+[ u+17a reference:u+7a diacritic:u+b4
+]
+
+[ u+17b reference:u+5a diacritic:u+2d9
+]
+
+[ u+17c reference:u+7a diacritic:u+2d9
+]
+
+[ u+17d reference:u+5a diacritic:u+2c7
+]
+
+[ u+17e reference:u+7a diacritic:u+2c7
+]
+
+[ u+17f
+
+
+
+
+    xxx
+   x
+   x
+   x
+   x
+   x
+   x
+   x
+]
