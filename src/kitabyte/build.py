@@ -21,11 +21,17 @@ SQUARE_SIZE = 25
 
 
 class Builder(object):
+    '''Uses Glyph objects to for drawing to FontForge.'''
     GlyphSizes = collections.namedtuple('GlyphSizes', [
         'square_size', 'descent_offset', 'row_len', 'row_count_flip',
     ])
 
-    def make_glyph(self, glyph_def):
+    def __init__(self):
+        super(Builder, self).__init__()
+        self.font = None
+
+    def _make_glyph(self, glyph_def):
+        '''Creates a FontForge glyph using the given Glyph.'''
         font = self.font
 
         if glyph_def.char_code == -1:
@@ -36,10 +42,10 @@ class Builder(object):
         glyph.clear()
         glyph.manualHints = True
 
-        glyph_sizes = self.calc_glyph_sizes(glyph_def)
+        glyph_sizes = self._calc_glyph_sizes(glyph_def)
 
-        self.draw_glyph_rows(glyph, glyph_def, glyph_sizes)
-        self.add_anchors(glyph, glyph_def, glyph_sizes)
+        self._draw_glyph_rows(glyph, glyph_def, glyph_sizes)
+        self._add_anchors(glyph, glyph_def, glyph_sizes)
 
         for arg in glyph_def.args:
             if arg.startswith(u'reference:'):
@@ -51,8 +57,8 @@ class Builder(object):
 
 #        if not ('oblique' in font.fontname.lower() or \
 #        'bold' in font.fontname.lower()):
-#            self.add_row_hints(glyph, glyph_def, glyph_sizes)
-#            self.add_col_hints(glyph, glyph_def, glyph_sizes)
+#            self._add_row_hints(glyph, glyph_def, glyph_sizes)
+#            self._add_col_hints(glyph, glyph_def, glyph_sizes)
 
         if 'oblique' in font.fontname.lower():
             glyph.transform(psMat.skew(math.pi / 180 * 10), ('partialRefs',))
@@ -62,7 +68,8 @@ class Builder(object):
         else:
             glyph.width = glyph_sizes.square_size * 8
 
-    def calc_glyph_sizes(self, glyph_def):
+    def _calc_glyph_sizes(self, glyph_def):
+        '''Calculates and returns GlyphSizes for the given Glyph.'''
         square_size = SQUARE_SIZE
         descent_offset = self.font.descent + square_size
         row_len = len(glyph_def.bitmap)
@@ -71,7 +78,8 @@ class Builder(object):
         return self.GlyphSizes(square_size, descent_offset, row_len,
             row_count_flip)
 
-    def draw_glyph_rows(self, glyph, glyph_def, glyph_sizes):
+    def _draw_glyph_rows(self, glyph, glyph_def, glyph_sizes):
+        '''Draws squares for creating the bitmap look.'''
         pen = glyph.glyphPen()
 
         for row in xrange(glyph_sizes.row_len):
@@ -84,10 +92,10 @@ class Builder(object):
                 if u'combining' in glyph_def.args:
                     col -= 8
 
-                self.draw_square(pen, row_flip, col, glyph_sizes)
+                self._draw_square(pen, row_flip, col, glyph_sizes)
 
-    def add_anchors(self, glyph, glyph_def, glyph_sizes):
-
+    def _add_anchors(self, glyph, glyph_def, glyph_sizes):
+        '''Adds diacritic anchor points.'''
         for row in xrange(glyph_sizes.row_len):
             row_flip = glyph_sizes.row_count_flip - row
             y = row_flip * glyph_sizes.square_size - glyph_sizes.descent_offset
@@ -105,7 +113,8 @@ class Builder(object):
                 elif s.lower() == u'm':
                     glyph.addAnchorPoint('Bottom', 'mark', x, y)
 
-    def add_row_hints(self, glyph, glyph_def, glyph_sizes):
+    def _add_row_hints(self, glyph, glyph_def, glyph_sizes):
+        '''Uses continuous blocks in a row as a hint.'''
         l = []
 
         for row in xrange(glyph_sizes.row_len):
@@ -127,7 +136,8 @@ class Builder(object):
 
         glyph.hhints = tuple(reversed(l))
 
-    def add_col_hints(self, glyph, glyph_def, glyph_sizes):
+    def _add_col_hints(self, glyph, glyph_def, glyph_sizes):
+        '''Uses continuous blocks in a column as a hint.'''
         l = []
 
         if not glyph_def.bitmap:
@@ -153,7 +163,8 @@ class Builder(object):
 
         glyph.vhints = l
 
-    def draw_square(self, pen, row, col, glyph_sizes):
+    def _draw_square(self, pen, row, col, glyph_sizes):
+        '''Draw a square by moving the pen.'''
         square_size = glyph_sizes.square_size
         descent_offset = glyph_sizes.descent_offset
         x = col * square_size
@@ -170,6 +181,7 @@ class Builder(object):
         pen.closePath()
 
     def build_font(self, dir_name, familyname, fontname, fullname):
+        '''Builds the font file.'''
         self.font = font = fontforge.font()
     #    height = 32
         font.descent = 4 * SQUARE_SIZE
@@ -210,8 +222,8 @@ class Builder(object):
                 try:
                     _logger.debug('Processing u+%x %s', glyph_def.char_code,
                         fontforge.nameFromUnicode(glyph_def.char_code))
-                    self.make_glyph(glyph_def)
-                except:
+                    self._make_glyph(glyph_def)
+                except (EnvironmentError, ValueError):
                     _logger.debug('Deferring glyph u+%x %s',
                         glyph_def.char_code,
                         fontforge.nameFromUnicode(glyph_def.char_code))
@@ -220,7 +232,7 @@ class Builder(object):
         for glyph_def in deferred_glyph_defs:
             _logger.debug('Processing u+%x %s', glyph_def.char_code,
                     fontforge.nameFromUnicode(glyph_def.char_code))
-            self.make_glyph(glyph_def)
+            self._make_glyph(glyph_def)
 
         font.selection.all()
         font.removeOverlap()
@@ -230,13 +242,14 @@ class Builder(object):
         return font
 
 
-copyright_str = (u'Copyright © 2012-2013 by Christopher Foo '
+COPYRIGHT_STR = (u'Copyright © 2012-2013 by Christopher Foo '
     '<chris.foo@gmail.com>. '
     u'Licensed under the SIL Open Font License version 1.1.'
 )
 
 
 def build_all(dest_dir_name, file_extensions=(u'sfd',)):
+    '''Builds all the font files into given destination directory.'''
     names = [
         (u'regular', u'Kitabyte', u'Kitabyte-Regular', u'Kitabyte',
             kitabyte.__version__),
@@ -253,7 +266,7 @@ def build_all(dest_dir_name, file_extensions=(u'sfd',)):
     for dir_name, familyname, fontname, fullname, version in names:
         font = builder.build_font(dir_name, familyname, fontname, fullname)
         font.version = version
-        font.copyright = copyright_str
+        font.copyright = COPYRIGHT_STR
 
         for file_extension in file_extensions:
             _logger.info('Building %s.%s', fontname, file_extension)

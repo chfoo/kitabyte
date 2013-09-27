@@ -7,15 +7,16 @@ from __future__ import print_function
 from kitabyte.font import Glyph
 import glob
 import os.path
-import sys
 
 
 class Comment(object):
+    '''Represents a comment in the definition.'''
     def __init__(self, text):
         self.text = text
 
 
 class Reader(object):
+    '''A wrapper to multiple files.'''
     def __init__(self, *filenames):
         self._filenames = filenames
         self._index = -1
@@ -28,6 +29,7 @@ class Reader(object):
         self._read_next_line()
 
     def _open_next_file(self):
+        '''Increment the index and open the next file.'''
         self._index += 1
 
         if len(self._filenames) <= self._index:
@@ -39,6 +41,7 @@ class Reader(object):
         self._file = open(self._filename, 'r')
 
     def _read_next_line(self):
+        '''Read and save the current line.'''
         if not self._file:
             return
 
@@ -54,9 +57,11 @@ class Reader(object):
         self._line = line.rstrip('\n')
 
     def peek(self):
+        '''Returns the next unread line without advancing to next line.'''
         return self._line
 
     def line(self):
+        '''Returns the next unread line.'''
         line = self._line
 
         self._read_next_line()
@@ -65,14 +70,17 @@ class Reader(object):
 
     @property
     def line_number(self):
+        '''Returns the current line number.'''
         return self._line_number
 
     @property
     def filename(self):
+        '''Returns the current path of the file.'''
         return self._filename
 
 
 def read_glyph(reader, char_code, args):
+    '''Parses the point map definition into a Glyph object.'''
     glyph = Glyph(char_code)
     glyph.line_number = reader.line_number
 
@@ -85,17 +93,13 @@ def read_glyph(reader, char_code, args):
         line = line.strip('\n')
         glyph.pointmap.append(list(line))
 
-#    if len(glyph.bitmap) != 16:
-#        print('Glyph u+%x height is not 16, was=%d, file=%s:%d' % (
-#            char_code, len(glyph.bitmap), reader.filename, reader.line_number),
-#            file=sys.stderr)
-
     glyph.args = args
 
     return glyph
 
 
 def read_font_def(reader):
+    '''Uses the given reader to generate Glyph objects.'''
     while True:
         line = reader.line()
 
@@ -117,6 +121,7 @@ def read_font_def(reader):
 
 
 def get_font_def_filenames(dir_name):
+    '''Return a list of glyph definition filenames.'''
     pattern = os.path.join(os.path.dirname(__file__), 'fonts', dir_name, '*',
         '*.kitabytedef')
 
