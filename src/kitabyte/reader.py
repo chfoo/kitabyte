@@ -117,7 +117,7 @@ def read_font_def(reader):
 
 
 def get_font_def_filenames(dir_name):
-    pattern = os.path.join(os.path.dirname(__file__), 'fonts', dir_name,
+    pattern = os.path.join(os.path.dirname(__file__), 'fonts', dir_name, '*',
         '*.kitabytedef')
 
     return list(glob.glob(pattern))

@@ -6,6 +6,7 @@
 import distutils.version
 
 short_version = u'1.8'  # N.N
-__version__ = short_version + u'.5'  # N.N[.N]+[{a|b|c|rc}N[.N]+][.postN][.devN]
+__version__ = '{}.{}'.format(short_version,
+    u'6')  # N.N[.N]+[{a|b|c|rc}N[.N]+][.postN][.devN]
 
 distutils.version.StrictVersion(__version__)
