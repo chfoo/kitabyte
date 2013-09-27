@@ -7,14 +7,9 @@ Kitabyte Typeface
 Kitabyte is a font family inspired by video game bitmap fonts. The font
 files are generated from text files.
 
-* Launchpad Project Webpage: https://launchpad.net/kitabyte
-* GitHub Repo Webpage: https://github.com/chfoo/kitabyte/
+* Launchpad Project Webpage (questions): https://launchpad.net/kitabyte
+* GitHub Repo Webpage (bug reports): https://github.com/chfoo/kitabyte/ 
 * Downloads: https://launchpad.net/kitabyte/+download
-
-Bug reports and questions should go on the Launchpad project. Currently,
-there is no preference on Branch Imports versus Pull Requests.
-The GitHub repo is a manually updated mirror although this may change
-on the first contribution ``:)``.
 
 
 Building
