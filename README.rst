@@ -20,6 +20,8 @@ To build the fonts, you will need:
 1. Python 2.7
 2. FontForge Python Scripting Extension
 
+   * On Ubuntu, the package is called ``python-fontforge``.
+
 A Makefile is provided.
 
 Glyph definitions
