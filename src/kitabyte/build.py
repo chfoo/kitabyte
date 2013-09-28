@@ -1,7 +1,7 @@
 # encoding=utf8
 '''Font file building'''
 # This file is part of Kitabyte.
-# Copyright © 2012 Christopher Foo <chris.foo@gmail.com>.
+# Copyright © 2012-2013 Christopher Foo <chris.foo@gmail.com>.
 # Licensed under SIL OFL 1.1. See COPYING.txt for details.
 from kitabyte.font import Glyph
 from kitabyte.reader import Reader
