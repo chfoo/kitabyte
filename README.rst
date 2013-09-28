@@ -7,8 +7,9 @@ Kitabyte Typeface
 Kitabyte is a font family inspired by video game bitmap fonts and the
 film Wreck-It Ralph. The font files are generated from text files.
 
-* Launchpad Project Webpage (questions): https://launchpad.net/kitabyte
-* GitHub Repo Webpage (bug reports): https://github.com/chfoo/kitabyte/ 
+* Homepage: https://github.com/chfoo/kitabyte
+* Launchpad Project Webpage (questions): https://answers.launchpad.net/kitabyte
+* GitHub Repo Webpage (bug reports): https://github.com/chfoo/kitabyte/issues
 * Downloads: https://launchpad.net/kitabyte/+download
 
 
@@ -23,6 +24,25 @@ To build the fonts, you will need:
    * On Ubuntu, the package is called ``python-fontforge``.
 
 A Makefile is provided.
+
+
+Coverage
+========
+
+============================== ==== ==== =========
+Block                          N    T    Percent
+============================== ==== ==== =========
+Basic Latin                      95  128    74.22%
+Latin-1 Supplement               95  128    74.22%
+Latin Extended-A                128  128   100.00%
+Latin Extended-B                  1  208     0.48%
+Spacing Modifier Letters          7   80     8.75%
+Combining Diacritical Marks      14  112    12.50%
+General Punctuation              66  112    58.93%
+Miscellaneous Symbols             1  256     0.39%
+Specials                          2   16    12.50%
+.notdef                           1    1   100.00%
+============================== ==== ==== =========
 
 
 Glyph definitions
@@ -64,6 +84,30 @@ M              mark Bottom
 ====== ======= ==== ==========
 
 
+Diacritics
+++++++++++
+
+Do not use glyphs from Combining Diacritics block when specifying
+diacritics. Use the following instead.
+
+===== ==========
+Glyph Code Point
+===== ==========
+˙     u+2d9
+˚     u+2da
+´     u+b4
+`     u+60
+^     u+5e
+ˇ     u+2c7
+˘     u+2d8
+¯     u+af
+¨     u+a8
+~     u+7e
+˛     u+2db
+¸     u+b8
+===== ==========
+
+
 Sizes
 +++++
 
@@ -87,4 +131,5 @@ The glyphs are monospaced. Half-width glyphs fit within this grid::
     15
     16
 
-Note that the various heights may vary among glyphs and the columns 1 and 8 are usually empty for spacing.
+Note that the various heights may vary among glyphs and the columns 1
+and 8 are usually empty for spacing.
