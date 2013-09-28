@@ -29,20 +29,20 @@ A Makefile is provided.
 Coverage
 ========
 
-============================== ==== ==== =========
-Block                          N    T    Percent
-============================== ==== ==== =========
-Basic Latin                      95  128    74.22%
-Latin-1 Supplement               95  128    74.22%
-Latin Extended-A                128  128   100.00%
-Latin Extended-B                  1  208     0.48%
-Spacing Modifier Letters          7   80     8.75%
-Combining Diacritical Marks      14  112    12.50%
-General Punctuation              66  112    58.93%
-Miscellaneous Symbols             1  256     0.39%
-Specials                          2   16    12.50%
-.notdef                           1    1   100.00%
-============================== ==== ==== =========
+============================== ====== ====== ====== =========
+Block                          Done   Total  Ctrl   Percent
+============================== ====== ====== ====== =========
+Basic Latin                        95     95     33   100.00%
+Latin-1 Supplement                 95     95     33   100.00%
+Latin Extended-A                  128    128      0   100.00%
+Latin Extended-B                    1    208      0     0.48%
+Spacing Modifier Letters            7     80      0     8.75%
+Combining Diacritical Marks        14    112      0    12.50%
+General Punctuation                66     87     25    75.86%
+Miscellaneous Symbols               1    256      0     0.39%
+Specials                            2     13      3    15.38%
+.notdef                             1      1      0   100.00%
+============================== ====== ====== ====== =========
 
 
 Glyph definitions

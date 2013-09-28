@@ -35,13 +35,35 @@ def read_blocks_file():
             yield BlockInfo(name, start_int, end_int)
 
 
+def get_controls():
+    '''Reads and returns control characters.'''
+    path = os.path.join(os.path.dirname(__file__), 'data', 'controls.txt')
+
+    with open(path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            yield int(line, 16)
+
+
 BLOCK_INFOS = tuple(read_blocks_file())
+CONTROLS = frozenset(get_controls())
 
 
 def get_name(char_code):
+    '''Get the Unicode block name for given character code.'''
     for info in BLOCK_INFOS:
         if info.start <= char_code <= info.end:
             return info.name
+
+
+def num_controls(block_info):
+    '''Return the number of control characters within this block.'''
+    counter = 0
+    for control_int in CONTROLS:
+        if block_info.start <= control_int <= block_info.end:
+            counter += 1
+
+    return counter
 
 
 if __name__ == '__main__':
@@ -53,12 +75,13 @@ if __name__ == '__main__':
         name = get_name(glyph_def.char_code)
         counter[name] += 1
 
-    for info in itertools.chain(BLOCK_INFOS, [BlockInfo(None, 0, 0)]):
+    for info in itertools.chain(BLOCK_INFOS, [BlockInfo(None, -1, -1)]):
         if counter[info.name]:
             num = counter[info.name]
-            num_in_block = info.end - info.start + 1
+            controls = num_controls(info)
+            num_in_block = info.end - info.start + 1 - controls
             percent = float(num) / num_in_block * 100
             name = info.name if info.name else '.notdef'
-            out_str = '{:30} {:4} {:4} {:8.02f}%'.format(name, num,
-                num_in_block, percent)
+            out_str = '{:30} {:6} {:6} {:6} {:8.02f}%'.format(name, num,
+                num_in_block, controls, percent)
             print(out_str)

@@ -1,5 +1,8 @@
 #!/usr/bin/python
 '''This script takes in files and writes out a file per glpyh.'''
+# This file is part of Kitabyte.
+# Copyright © 2013 Christopher Foo <chris.foo@gmail.com>.
+# Licensed under SIL OFL 1.1. See COPYING.txt for details.
 import argparse
 import os.path
 
