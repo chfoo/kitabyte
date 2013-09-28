@@ -18,7 +18,8 @@ except ImportError:
     warnings.warn('Optional cairo/pango packages not installed.')
 
 
-def make_sheet(columns=16, size=12):
+def make_sheet(columns=16, size=12, style='',
+out_path="build/kitabyte_sheet.png"):
     reader = Reader(*kitabyte.reader.get_font_def_filenames('regular'))
     glyphs = list(kitabyte.reader.read_font_def(reader))
     glyphs.sort(key=lambda x: x.char_code)
@@ -33,7 +34,7 @@ def make_sheet(columns=16, size=12):
     surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
     context = cairo.Context(surf)
     pangocairo_context = pangocairo.CairoContext(context)
-    font = pango.FontDescription("Kitabyte {}px".format(size))
+    font = pango.FontDescription("Kitabyte {} {}px".format(style, size))
 #     font.set_absolute_size(size * pango.SCALE)
     layout = pangocairo_context.create_layout()
     layout.set_font_description(font)
@@ -65,8 +66,10 @@ def make_sheet(columns=16, size=12):
             pangocairo_context.show_layout(layout)
             context.restore()
 
-    with open("build/kitabyte_sheet.png", "wb") as image_file:
+    with open(out_path, "wb") as image_file:
         surf.write_to_png(image_file)
 
 if __name__ == '__main__':
-    make_sheet()
+    make_sheet(size=24, out_path='build/KitabyteRegularGlyphSheet.png')
+    make_sheet(size=24, out_path='build/KitabyteBoldGlyphSheet.png',
+        style='Bold')
