@@ -1,7 +1,7 @@
 # encoding=utf8
 '''Prints coverage report'''
 # This file is part of Kitabyte.
-# Copyright © 2012-2013 Christopher Foo <chris.foo@gmail.com>.
+# Copyright © 2013 Christopher Foo <chris.foo@gmail.com>.
 # Licensed under SIL OFL 1.1. See COPYING.txt for details.
 from __future__ import print_function
 
@@ -82,6 +82,6 @@ if __name__ == '__main__':
             num_in_block = info.end - info.start + 1 - controls
             percent = float(num) / num_in_block * 100
             name = info.name if info.name else '.notdef'
-            out_str = '{:30} {:6} {:6} {:6} {:8.02f}%'.format(name, num,
+            out_str = '{:40} {:6} {:6} {:6} {:8.02f}%'.format(name, num,
                 num_in_block, controls, percent)
             print(out_str)
