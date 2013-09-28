@@ -96,7 +96,7 @@ Glyph Code Point
 ˙     u+2d9
 ˚     u+2da
 ´     u+b4
-`     u+60
+\`     u+60
 ^     u+5e
 ˇ     u+2c7
 ˘     u+2d8
